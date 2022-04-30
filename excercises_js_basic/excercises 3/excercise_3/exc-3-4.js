@@ -1,11 +1,14 @@
 let persons = [
-    {firstName: "Jim", lastName: "Jimithy", age: 15},
-    {firstName: "Peter", lastName: "Peterson", age: 25},
-    {firstName: "Carl", lastName: "Carlson", age: 28},
-    {firstName: "Jane", lastName: "Janison", age: 22}
+  { firstName: 'Jim', lastName: 'Jimithy', age: 15 },
+  { firstName: 'Peter', lastName: 'Peterson', age: 25 },
+  { firstName: 'Carl', lastName: 'Carlson', age: 28 },
+  { firstName: 'Jane', lastName: 'Janison', age: 22 },
 ];
 
-//TODO
+persons.map((value) => {
+  return (value.luckyNumber =
+    value.firstName.length + value.lastName.length + 1);
+});
 
 console.log(persons);
 
