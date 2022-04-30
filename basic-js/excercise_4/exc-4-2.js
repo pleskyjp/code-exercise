@@ -1,17 +1,14 @@
 var newObj = {
-  newValues: [],
+  newValue: 0,
   oldValues: [],
   set value(value) {
-    this.newValues.push(value);
-
-    this.oldValues.push(this.newValues.indexOf(value));
+    this.oldValues.push(this.newValue);
+    this.newValue = value;
   },
   get value() {
-    return this.newValues;
+    return this.newValue;
   },
 };
-
-//Assignment wants probably different solution. This code is writed for the expected output in comment next to console.log
 
 newObj.value = 1;
 newObj.value = 2;

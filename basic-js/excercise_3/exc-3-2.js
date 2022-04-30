@@ -1,5 +1,5 @@
 function acceptThreeFunctions(a, b, c, n = 42) {
-  return [a(n), b(n), c(n)].sort((a, b) => a - b).reverse()[0];
+  return [a(n), b(n), c(n)].sort((a, b) => b - a)[0];
 }
 
 console.log(

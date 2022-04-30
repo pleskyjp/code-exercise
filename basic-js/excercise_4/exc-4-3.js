@@ -7,7 +7,7 @@ var anotherObj = {
 };
 
 Object.keys(anotherObj).forEach((value) => {
-  value.startsWith('_') ? delete anotherObj[value] : null;
+  value.startsWith('_') && delete anotherObj[value];
 });
 
 console.log(anotherObj); //{ a: 1, e: [Function: e] }
