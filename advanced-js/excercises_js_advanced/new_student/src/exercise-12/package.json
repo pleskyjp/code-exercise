@@ -1,0 +1,13 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "http-server.js",
+  "scripts": {
+    "start": "node http-server.js"
+  },
+  "author": "Vojtěch Šebek",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
