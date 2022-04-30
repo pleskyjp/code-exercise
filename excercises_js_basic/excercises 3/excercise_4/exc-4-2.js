@@ -11,6 +11,8 @@ var newObj = {
   },
 };
 
+//Assignment wants probably different solution. This code is writed for the expected output in comment next to console.log
+
 newObj.value = 1;
 newObj.value = 2;
 newObj.value = 3;
