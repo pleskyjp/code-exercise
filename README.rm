@@ -1,0 +1,35 @@
+##Exercises 1
+
+1.1: sum of even elements of array
+1.2: find median in sorted array
+1.3: find modus
+1.4: unique elements (without set)
+1.5: object to string "(key -> value; key -> value)"
+without nesting, only top level
+
+##Exercises 2
+
+ 2.1: camelCase to snake_case
+ignore multiple capital letters in a row
+2.2: snake_case to camelCase
+2.3: palindrom
+2.4: transform CSV
+2.5: count of changes "+++-+---++--+-+-++"
+
+##Exercises 3
+
+3.1: sort array descending using compare func
+3.2: create function foo that accepts 3 functions and 1 number as params
+each of these functions accept 1 param - number and return another number
+default value for that number is 42
+function foo return largest result from one of these functions
+3.3: find oldest person in array of objects using array.reduce
+3.4: add luckyNumber to each person in array using array.map
+luckyNumber is equal to total length of their full name (with space)
+3.5: function returning Nth smallest element
+
+##Exercises 4
+
+4.1: get count of values with data type number (top level only)
+4.2: add setter which also store previous values on the object
+4.3: remove all private properties (starts with _) from the object
