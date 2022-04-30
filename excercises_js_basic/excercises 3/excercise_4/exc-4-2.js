@@ -1,5 +1,14 @@
 var newObj = {
-    //TODO
+  newValues: [],
+  oldValues: [],
+  set value(value) {
+    this.newValues.push(value);
+
+    this.oldValues.push(this.newValues.indexOf(value));
+  },
+  get value() {
+    return this.newValues;
+  },
 };
 
 newObj.value = 1;
