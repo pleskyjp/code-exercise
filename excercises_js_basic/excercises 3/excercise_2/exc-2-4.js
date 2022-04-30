@@ -17,7 +17,7 @@ function tranformCsv(string) {
   );
 
   // Final converting
-  const result = finishedArray.map((value) =>
+  return finishedArray.map((value) =>
     value.reduce((a, v, i) => {
       if (i === 0) {
         return { ...a, id: Number(v) };
@@ -28,8 +28,6 @@ function tranformCsv(string) {
       }
     }, {})
   );
-
-  return result;
 }
 
 console.log(tranformCsv(csvInput));
