@@ -1,0 +1,25 @@
+// 1.5 object to string "(key -> value; key -> value)"
+let input6 = {a: 1, b: 2, ccc: "abl", "d": true};
+
+function objectToString(obj) {
+  let result = "(";
+  let length = Object.keys(obj).length - 1;
+
+  let index = 0;
+  for (let key in obj) {
+    // interpolace
+    result += `${key} -> ${obj[key]}`;
+
+    // pokud jsme na konci
+    if (index === length) break;
+
+    result += "; "
+    index ++;
+  }
+
+  result += ")";
+
+  return result
+}
+
+console.log(objectToString(input6)); //(a -> 1; b -> 2; ccc -> abl; d -> true)
