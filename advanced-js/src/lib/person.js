@@ -1,16 +1,8 @@
-const ACTIVE = 'active';
-const INACTIVE = 'inactive';
-
 class Person {
-  constructor(state = ACTIVE, uid = '0-0') {
-    if (state === ACTIVE || state === INACTIVE) {
-      this._state = state;
-    } else {
-      throw new Error('invalid value: ' + value);
-    }
-
+  constructor(state = 'active', uid = '0-0') {
+    this._state = state;
     this._uid = uid;
-    Person.count += 1;
+    Person.count++;
   }
 
   getState() {
@@ -18,7 +10,7 @@ class Person {
   }
 
   setState(value) {
-    if (value === ACTIVE || value === INACTIVE) {
+    if (value === 'active' || value === 'inactive') {
       this._state = value;
     } else {
       throw new Error('invalid value: ' + value);
