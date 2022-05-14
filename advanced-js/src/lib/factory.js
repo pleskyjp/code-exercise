@@ -3,20 +3,20 @@ const Car = require('./car');
 
 class CarFactory {
   constructor(energy) {
-    this.energy = energy;
-    this.energyCost = 2;
-    this.warehouse = Warehouse;
+    this._energy = energy;
+    this._energyCost = 2;
+    this._warehouse = Warehouse;
   }
   getWarehouse() {
-    return Warehouse;
+    return this._warehouse;
   }
   produceCar(color = 'red', wheels = 4, engine = false) {
-    if (this.energy - this.energyCost > -1) {
-      this.energy -= 2;
+    if (this._energy - this._energyCost > -1) {
+      this._energy -= 2;
 
       const car = new Car(color, wheels, engine);
 
-      this.warehouse.createdCars.push(car);
+      this._warehouse.createdCars.push(car);
       return car;
     } else {
       return null;
@@ -24,13 +24,13 @@ class CarFactory {
   }
 
   addEnergyPower = (value = 0) => {
-    this.energy += value;
+    this._energy += value;
   };
 
   changeCarColor = (car, newColor = 'blue') => {
-    if (this.energy - 1 > -1) {
-      this.energy -= 1;
-      car.color = newColor;
+    if (this._energy - 1 > -1) {
+      this._energy -= 1;
+      car.setColor(newColor);
     } else {
       return null;
     }
