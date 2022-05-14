@@ -1,7 +1,5 @@
-'use strict';
-
-const ValidationTypes = require('./lib/validation-types');
-const { validate } = require('./lib/validation');
+const ValidationTypes = require('./lib/validation-types'); // create file validation-types.js
+const { validate } = require('./lib/validation'); // create file validation.js
 
 const schema = {
   name: ValidationTypes.string,
@@ -15,8 +13,8 @@ const values = {
   extra: false,
 };
 
-const result = validate(schema, values);
+let result = validate(schema, values); //return array of invalid keys
 console.log(
-  result.length === 0 ? 'validation passed' : `invalid keys: ${result}`
+  result.length === 0 ? 'valid' : 'invalid keys: ' + result.join(', ')
 );
 //invalid keys: age
