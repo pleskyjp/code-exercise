@@ -1,8 +1,5 @@
-"use strict"
-
 let warehouse = {
-  createdCars: []
+  createdCars: [],
 };
 
 module.exports = warehouse;
-
