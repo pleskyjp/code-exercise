@@ -1,5 +1,4 @@
-function getInfo() {
-  const values = Array.from(arguments);
+const getInfo = (...values) => {
   let results = [];
 
   let index = 0;
@@ -18,6 +17,6 @@ function getInfo() {
     index++;
   });
   return results;
-}
+};
 
 module.exports = getInfo;
