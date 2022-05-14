@@ -1,4 +1,6 @@
 class Person {
+  static count = 0;
+
   constructor(state = 'active', uid = '0-0') {
     this._state = state;
     this._uid = uid;
@@ -25,6 +27,5 @@ class Person {
     return Person.count;
   }
 }
-Person.count = 0;
 
 module.exports = Person;
