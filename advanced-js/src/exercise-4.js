@@ -1,6 +1,6 @@
 'use strict';
 
-const Factory = require('./lib/factory'); // create file factory.js
+const Factory = require('./lib/factory');
 
 let myFactory = new Factory(10);
 let energyBoosts = [7, 3, 4, 5, 4];
@@ -29,5 +29,3 @@ for (let i = 0; i < myFactory.getWarehouse().createdCars.length; i += 2) {
     }
   }
 }
-
-//myFactory.warehouse; //JSON.stringify(myFactory.warehouse, null, 2)
