@@ -1,21 +1,18 @@
-function addString(previous, current){
-  setTimeout(
-    () => {
-      return(previous + ' ' + current)
-    },
-    Math.floor(Math.random() * 100) + 1
-  )
-}
+const addString = (previous, current, callback) => {
+  setTimeout(() => {
+    callback(previous + ' ' + current);
+  }, Math.floor(Math.random() * 100) + 1);
+};
 
-
-function addAll(){
-  let result = addString('', 'A');
-  result = addString(result, 'B');
-  result = addString(result, 'C');
-  console.log(result);
-}
-
-
-addAll();
+const addAll = (value) => {
+  addString(value, 'A', (value) => {
+    addString(value, 'B', (value) => {
+      addString(value, 'C', (value) => {
+        console.log(value);
+      });
+    });
+  });
+};
+addAll('');
 // expected result in console:
 // A B C
