@@ -14,5 +14,3 @@ const addAll = (value) => {
   });
 };
 addAll('');
-// expected result in console:
-// A B C

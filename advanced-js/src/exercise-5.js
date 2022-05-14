@@ -15,7 +15,3 @@ const printAll = () => {
 };
 
 printAll();
-// expected result in console:
-// A
-// B
-// C
