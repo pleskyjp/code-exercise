@@ -2,20 +2,37 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Library = require('./library-dao');
 const morgan = require('morgan');
+const LRU = require('lru-cache');
 
-const library = new Library();
+const options = {
+  max: 500,
+
+  // for use with tracking overall storage size
+  maxSize: 5000,
+  sizeCalculation: (value, key) => {
+    return 1;
+  },
+
+  // how long to live in ms
+  ttl: 1000 * 60 * 5,
+
+  // return stale items before removing from cache?
+  allowStale: false,
+
+  updateAgeOnGet: false,
+  updateAgeOnHas: false,
+};
+
 const app = express();
-
-app.listen(5000, () => {
-  console.log('Server started on port 5000.');
-});
+const library = new Library();
+const cache = new LRU(options);
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Juch' });
+  res.send('Juch');
 });
 app.get('/getBook', async (req, res) => {
   const { query } = req;
@@ -25,14 +42,22 @@ app.get('/getBook', async (req, res) => {
     return res.status(400).send({ error: 'Code attribute not assigned' });
   }
 
-  const book = await library.getBook(bookCode);
+  const cachedBook = cache.get(bookCode);
+  if (cachedBook) {
+    res.json(cachedBook);
+    console.log('yes');
+  } else {
+    const book = await library.getBook(bookCode);
 
-  if (!book) {
-    return res
-      .status(400)
-      .send({ error: `Book with the specified code does not exist` });
+    if (!book) {
+      return res
+        .status(400)
+        .send({ error: `Book with the specified code does not exist` });
+    }
+    cache.set(book.code, book);
+
+    res.json(book);
   }
-  res.json(book);
 });
 
 app.post('/createBook', async (req, res) => {
@@ -66,4 +91,8 @@ app.post('/createBook', async (req, res) => {
   }
 
   res.json(book);
+});
+
+app.listen(5000, () => {
+  console.log('Server started on port 5000.');
 });
