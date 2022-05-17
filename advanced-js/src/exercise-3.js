@@ -1,6 +1,6 @@
-const Person = require('./lib/person');
-const Human = require('./lib/human');
-const UuEE = require('./lib/uuee');
+const Person = require('./lib/Person');
+const Human = require('./lib/Human');
+const UuEE = require('./lib/Uuee');
 
 const John = new Human('John', 25);
 new Human('Peter', 32);

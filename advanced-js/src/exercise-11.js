@@ -1,1 +1,1 @@
-const Library = require('./exercise-12/library-dao');
+const Library = require('./exercise-12/Library');

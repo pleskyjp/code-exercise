@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const Library = require('./library-dao');
+const Library = require('./Library');
 const morgan = require('morgan');
 const LRU = require('lru-cache');
 

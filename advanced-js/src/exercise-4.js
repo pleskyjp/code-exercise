@@ -1,6 +1,6 @@
 'use strict';
 
-const Factory = require('./lib/factory');
+const Factory = require('./lib/CarFactory');
 
 let myFactory = new Factory(10);
 let energyBoosts = [7, 3, 4, 5, 4];
