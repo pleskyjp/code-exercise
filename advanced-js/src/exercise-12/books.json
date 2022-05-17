@@ -1,20 +1,5 @@
 [
   {
-    "code": "HOB",
-    "name": "Hobbit",
-    "author": "J. R. R. Tolkien"
-  },
-  {
-    "code": "LOTR1",
-    "name": "The Fellowship of the Ring",
-    "author": "J. R. R. Tolkien"
-  },
-  {
-    "code": "LOTR2",
-    "name": "Two Towers",
-    "author": "J. R. R. Tolkien"
-  },
-  {
     "code": "code",
     "name": "name",
     "author": "author"
@@ -26,16 +11,6 @@
   },
   {
     "code": "code3",
-    "name": "name",
-    "author": "author"
-  },
-  {
-    "code": "code6",
-    "name": "name",
-    "author": "author"
-  },
-  {
-    "code": "code7",
     "name": "name",
     "author": "author"
   }

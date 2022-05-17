@@ -32,7 +32,7 @@ class Library {
     books.push(book);
 
     try {
-      await wf(this._getStorageLocation(), JSON.stringify(books, null, 2));
+      await wf(this._getStorageLocation(), JSON.stringify(books, null, '\t'));
       return { status: 'OK', data: book };
     } catch (e) {
       return { status: 'ERROR', error: e };
