@@ -1,7 +1,7 @@
 const printString = (string) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(console.log(string));
+      return resolve(console.log(string));
     }, Math.floor(Math.random() * 100) + 1);
   });
 };
@@ -13,3 +13,8 @@ const printAll = async () => {
 };
 
 printAll();
+
+// expected result in console:
+// A
+// B
+// C

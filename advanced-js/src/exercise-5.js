@@ -1,8 +1,7 @@
 const printString = (string, callback) => {
-  console.log('STARTED: ' + string);
   setTimeout(() => {
     console.log(string);
-    callback();
+    return callback();
   }, Math.floor(Math.random() * 100) + 1);
 };
 
@@ -15,3 +14,8 @@ const printAll = () => {
 };
 
 printAll();
+
+// expected result in console:
+// A
+// B
+// C

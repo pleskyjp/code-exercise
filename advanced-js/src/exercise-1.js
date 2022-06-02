@@ -5,12 +5,12 @@ const getInfo = (...values) => {
   values.forEach((value) => {
     const isFalsy = !value;
     const type = typeof value;
-    const StringLength = String(value).length;
+    const stringLength = String(value).length;
 
     results.push({
       isFalsy,
       type,
-      StringLength,
+      stringLength,
       index,
     });
 

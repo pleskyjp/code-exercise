@@ -1,6 +1,8 @@
-var changes = '+++-+---++--+-+-++';
+//2.5: count of changes "+++-+---++--+-+-++"
 
-function countOfChages(str) {
+const changes = '+++-+---++--+-+-++';
+
+const countOfChages = (str) => {
   const array = str.split('');
   let count = 0;
 
@@ -12,6 +14,6 @@ function countOfChages(str) {
   });
 
   return count;
-}
+};
 
 console.log(countOfChages(changes)); //10

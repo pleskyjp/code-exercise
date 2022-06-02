@@ -1,4 +1,6 @@
-var obj = {
+//4.1: get count of values with data type number (top level only)
+
+const obj = {
   a: 2,
   b: '22',
   c: false,

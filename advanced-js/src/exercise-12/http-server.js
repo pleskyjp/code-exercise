@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const Library = require('./Library');
+const Library = require('./library-dao');
 const morgan = require('morgan');
 const LRU = require('lru-cache');
 
@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.send('Juch');
+  return res.send('Juch');
 });
 app.get('/getBook', async (req, res) => {
   const { query } = req;
@@ -43,9 +43,9 @@ app.get('/getBook', async (req, res) => {
   }
 
   const cachedBook = cache.get(bookCode);
+
   if (cachedBook) {
-    res.json(cachedBook);
-    console.log('yes');
+    return res.json(cachedBook);
   } else {
     const book = await library.getBook(bookCode);
 
@@ -56,7 +56,7 @@ app.get('/getBook', async (req, res) => {
     }
     cache.set(book.code, book);
 
-    res.json(book);
+    return res.json(book);
   }
 });
 
@@ -79,18 +79,17 @@ app.post('/createBook', async (req, res) => {
     await library.createBook(book);
   } catch (e) {
     if (e.code == 'DUPLICATE_CODE') {
-      res.status(400).send({
+      return res.status(400).send({
         error: 'The book already exists in the database - duplicate code',
       });
     } else {
-      res.status(500).send({
+      return res.status(500).send({
         error: 'Unexpecter error',
       });
     }
-    return res.send({ error: e.message });
   }
 
-  res.json(book);
+  return res.json(book);
 });
 
 app.listen(5000, () => {

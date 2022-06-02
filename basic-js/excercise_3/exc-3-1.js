@@ -1,4 +1,6 @@
-var points = [5, 6, 3, 2, 1, 8, 4, 6, -2, 2, -1];
+//3.1: sort array descending using compare func
+
+const points = [5, 6, 3, 2, 1, 8, 4, 6, -2, 2, -1];
 
 points.sort((a, b) => b - a);
 

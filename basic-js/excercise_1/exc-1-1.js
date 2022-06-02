@@ -1,5 +1,6 @@
-var input = [1, 3, 6, 0, 5, -2, 9, 11, 16];
+//1.1: sum of even elements of array
 
+const input = [1, 3, 6, 0, 5, -2, 9, 11, 16];
 let total = 0;
 
 input.forEach((value) => {

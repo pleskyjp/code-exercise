@@ -1,6 +1,8 @@
-var csvInput = '1,  Peter,  22;' + '2, Jim, 11,;' + '3, P eeter, 8 ;';
+//2.4: transform CSV
 
-function tranformCsv(string) {
+const csvInput = '1,  Peter,  22;' + '2, Jim, 11,;' + '3, P eeter, 8 ;';
+
+const tranformCsv = (string) => {
   // Splitting string by semicolons to array
   const splittedString = string.split(';');
 
@@ -20,15 +22,15 @@ function tranformCsv(string) {
   return finishedArray.map((value) =>
     value.reduce((a, v, i) => {
       if (i === 0) {
-        return { ...a, id: Number(v) };
+        return { ...a, id: parseInt(v) };
       } else if (i === 1) {
         return { ...a, name: v };
       } else if (i === 2) {
-        return { ...a, age: Number(v) };
+        return { ...a, age: parseInt(v) };
       }
     }, {})
   );
-}
+};
 
 console.log(tranformCsv(csvInput));
 // [ { id: 1, name: 'Peter', age: 22 },

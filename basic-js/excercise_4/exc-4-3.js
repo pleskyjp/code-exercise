@@ -1,4 +1,6 @@
-var anotherObj = {
+//4.3: remove all private properties (starts with _) from the object
+
+const anotherObj = {
   a: 1,
   _b: 2,
   _c: 4,

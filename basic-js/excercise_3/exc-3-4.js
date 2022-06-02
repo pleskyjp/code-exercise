@@ -1,3 +1,6 @@
+//3.4: add luckyNumber to each person in array using array.map
+//luckyNumber is equal to total length of their full name (with space)
+
 let persons = [
   { firstName: 'Jim', lastName: 'Jimithy', age: 15 },
   { firstName: 'Peter', lastName: 'Peterson', age: 25 },

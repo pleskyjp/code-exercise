@@ -1,6 +1,6 @@
 const addString = (previous, current, callback) => {
   setTimeout(() => {
-    callback(previous + ' ' + current);
+    return callback(previous + ' ' + current);
   }, Math.floor(Math.random() * 100) + 1);
 };
 
@@ -14,3 +14,6 @@ const addAll = (value) => {
   });
 };
 addAll('');
+
+// expected result in console:
+// A B C

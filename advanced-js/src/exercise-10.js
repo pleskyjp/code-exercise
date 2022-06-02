@@ -1,7 +1,7 @@
 const addString = (previous, current) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(previous + ' ' + current);
+      return resolve(previous + ' ' + current);
     }, Math.floor(Math.random() * 100) + 1);
   });
 };
@@ -14,3 +14,6 @@ const addAll = async () => {
 };
 
 addAll();
+
+// expected result in console:
+// A B C

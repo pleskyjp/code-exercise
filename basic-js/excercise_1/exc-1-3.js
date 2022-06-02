@@ -1,6 +1,8 @@
-var input4 = [1, 2, 2, 4, 6, 9, 11, 12, 11, 666];
+//1.3: find modus
 
-function findModus(arr) {
+const input4 = [1, 2, 2, 4, 6, 9, 11, 12, 11, 666];
+
+const findModus = (arr) => {
   let highestOccurrence = 0;
   let count = {};
   let result = [];
@@ -18,6 +20,6 @@ function findModus(arr) {
   });
 
   return result;
-}
+};
 
 console.log(findModus(input4)); //[ 2, 11 ]
