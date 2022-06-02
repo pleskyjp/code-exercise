@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const LRU = require('lru-cache');
 
 const options = {
-  max: 500,
+  max: 10,
 
   // for use with tracking overall storage size
   maxSize: 5000,
