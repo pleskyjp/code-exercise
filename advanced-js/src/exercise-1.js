@@ -1,8 +1,7 @@
 const getInfo = (...values) => {
   let results = [];
 
-  let index = 0;
-  values.forEach((value) => {
+  values.forEach((value, index) => {
     const isFalsy = !value;
     const type = typeof value;
     const stringLength = String(value).length;
@@ -13,8 +12,6 @@ const getInfo = (...values) => {
       stringLength,
       index,
     });
-
-    index++;
   });
   return results;
 };
