@@ -1,0 +1,374 @@
+Exercise 1
+The first exercise focuses on types and working with an unspecified number of parameters in the function.
+The goal is to process each parameter and create an object with the following attributes:
+isFalsy = determine if the value is in JS determined as falsy or not
+type = what data type value is
+stringLength = what is the length of the value if it is converted to the string
+index = position of value in parameters, starting from zero
+limitations:
+you are not allowed to use Boolean() method to determine, if the value is falsy
+
+exercise-1.js
+
+function getInfo() {
+  var results = [];
+  // TODO
+  values.forEach((value) => {
+  // TODO
+  });
+  return results
+}
+
+
+module.exports = getInfo;
+
+
+
+Exercise 2
+
+The code usually consists of multiple files, so let's make sure, that you know how to load code from another file.
+In this exercise, you are supposed to implement a simple validation mechanism.
+It works the way, that you have two objects which share the same keys. Values in the first one are functions that will return true/false based on the input from the second object if it matches that data type.
+Those functions are loaded from another file.
+Validate function, that performs the actual validation simply go through the set of keys of these objects and calls those functions with values. Validate function returns an array of invalid keys.
+create those two files which are supposed to be loaded:
+
+exercise-2.js
+
+const ValidationTypes = require("./lib/validation-types"); // create file validation-types.js
+const { validate } = require("./lib/validation"); // create file validation.js
+
+const schema = {
+  name: ValidationTypes.string,
+  age: ValidationTypes.number,
+  extra: ValidationTypes.any,
+};
+
+const values = {
+  name: "John",
+  age: "",
+  extra: false,
+};
+
+let result = validate(schema, values); //return array of invalid keys
+console.log(result.length === 0 ? "valid" : "invalid keys: " + result.join(", "));
+//invalid keys: age
+
+
+
+Exercise 3
+
+Most of the time, you will use classes as a data structure, so it is crucial to make sure, that you know how to use them, therefore let's try to implement three classes with inheritance. 
+class Person:
+constructor accepts two parameters:
+state ("active" as default value)
+uid ("0-0" as default value)
+instance methods:
+getState() -> returns state
+setState(value) -> sets the state to the instance
+only "active" and "inactive" values are allowed, otherwise it throws an exception
+getUid() -> return uuIdentity
+class methods (static):
+getCountOfPersons() -> return total count of created persons
+
+
+class Human
+inherits from Person
+constructor accepts four parameters: name, age, state, uid
+instance methods:
+getName() -> returns name
+sayHello() -> returns "Hello from ${name}"
+
+class Uuee
+inherits from Person
+constructor accepts three parameters: owner, state, uid
+check that owner is instance of Human, otherwise throw an exception
+instance methods:
+sayHello(caller) -> if the caller is the owner (same instance), it returns: "Hello ${ownerName}", otherwise returns "No!" 
+
+exercise-3.js
+
+const Person = require("./lib/person"); // create file person.js
+const Human = require("./lib/human"); // create file human.js
+const UuEE = require("./lib/uuee"); // create file uuee.js
+
+
+
+let John = new Human("John", 25);
+let Peter = new Human("Peter", 32);
+let machine = new UuEE(John);
+
+machine.sayHello(Person); //No!
+machine.sayHello(John); //Hello John
+
+
+
+
+
+Exercise 4
+
+Let's extend working with classes by using the Factory pattern to produce cars:
+class Factory:
+the constructor accepts energy as a parameter 
+store this energy on the instance
+store reference to the warehouse on the instance with getter (getWarehouse())
+class has following methods:
+produceCar(color = "red", wheels = 4, engine = false)
+at first, check that you have enough power to create a new car (2 power per car), otherwise return null
+store created instance of class Car in the warehouse
+addEnergyPower(value=0)
+add energy to factory
+getWarehouse()
+changeCarColor(car, newColor="blue")
+at first, check that you have enough power to change the color (1 power per car), and change the color of a car, otherwise return null
+
+
+class Car
+the constructor accepts parameters: color, wheels and engine
+class has getters and setters for all these 3 parameters
+getColor(), setColor(),..
+
+Warehouse
+warehouse is a simple object with nested array
+this structure is stored in another file
+
+warehouse.js
+
+let warehouse = {
+  createdCars: []
+};
+
+module.exports = warehouse;
+
+
+exercise-4.js
+
+"use strict"
+
+const Factory = require("./lib/factory"); // create file factory.js
+
+let myFactory = new Factory(10);
+let energyBoosts = [7, 3, 4, 5, 4];
+
+let numberOfCars = 0;
+while (numberOfCars < 14) {
+  if (myFactory.produceCar() !== null) {
+    numberOfCars += 1
+  } else {
+    if (energyBoosts.length > 0) {
+      myFactory.addEnergyPower(energyBoosts.shift())
+    } else {
+      break
+    }
+  }
+}
+
+for (let i = 0; i < myFactory.getWarehouse().createdCars.length; i += 2) {
+  let car = myFactory.getWarehouse().createdCars[i];
+  if (myFactory.changeCarColor(car) === null) {
+    if (energyBoosts.length > 0) {
+      myFactory.addEnergyPower(energyBoosts.shift());
+      i -= 2;
+    } else {
+      break
+    }
+  }
+}
+
+//myFactory.warehouse; //JSON.stringify(myFactory.warehouse, null, 2)
+
+
+
+
+
+
+Exercise 5 and 6
+Lets practice callbacks, if you fully understand how they work, you should be able to modify following codes, so they will return always characters in alphabetical order.
+
+exercise-5.js
+
+function printString(string) {
+  console.log("STARTED: " + string);
+  setTimeout(
+    () => {
+      console.log(string);
+    },
+    Math.floor(Math.random() * 100) + 1
+  )
+}
+
+function printAll() {
+  printString("A")
+  printString("B")
+  printString("C")
+}
+
+printAll();
+// expected result in console:
+// A
+// B
+// C
+
+
+exercise-6.js
+
+function addString(previous, current){
+    setTimeout(
+      () => {
+        return(previous + ' ' + current)
+      }, 
+      Math.floor(Math.random() * 100) + 1
+    )
+}
+
+
+function addAll(){
+  let result = addString('', 'A');
+  result = addString(result, 'B');
+  result = addString(result, 'C');
+  console.log(result);
+}
+
+
+addAll();
+// expected result in console:
+// A B C
+
+
+Exercise 7 and 8
+Lets practice promises, if you fully understand how they work, you should be able to modify following codes, so they will return always characters in alphabetical order.
+
+exercise-7.js
+
+function printString(string) {
+  console.log("STARTED: " + string);
+  setTimeout(
+    () => {
+      console.log(string);
+    },
+    Math.floor(Math.random() * 100) + 1
+  )
+}
+
+function printAll() {
+  printString("A")
+  printString("B")
+  printString("C")
+}
+
+printAll();
+// expected result in console:
+// A
+// B
+// C
+
+exercise-8.js
+
+function addString(previous, current){
+    setTimeout(
+      () => {
+        return(previous + ' ' + current)
+      }, 
+      Math.floor(Math.random() * 100) + 1
+    )
+}
+
+
+function addAll(){
+  let result = addString('', 'A');
+  result = addString(result, 'B');
+  result = addString(result, 'C');
+  console.log(result);
+}
+
+
+addAll();
+// expected result in console:
+// A B C
+
+exercise-9.js
+
+Exercise 9 and 10
+Lets practice async/await, if you fully understand how they work, you should be able to modify following codes, so they will return always characters in alphabetical order.
+
+
+function printString(string) {
+  console.log("STARTED: " + string);
+  setTimeout(
+    () => {
+      console.log(string);
+    },
+    Math.floor(Math.random() * 100) + 1
+  )
+}
+
+function printAll() {
+  printString("A")
+  printString("B")
+  printString("C")
+}
+
+printAll();
+// expected result in console:
+// A
+// B
+// C
+
+
+exercise-9.js
+
+function addString(previous, current){
+    setTimeout(
+      () => {
+        return(previous + ' ' + current)
+      }, 
+      Math.floor(Math.random() * 100) + 1
+    )
+}
+
+
+function addAll(){
+  let result = addString('', 'A');
+  result = addString(result, 'B');
+  result = addString(result, 'C');
+  console.log(result);
+}
+
+
+addAll();
+// expected result in console:
+// A B C
+
+
+
+Exercise 11
+Let's practies working with file system by creating storage for books.
+Create class with methods:
+async createBook(book)
+asnyc getBook(code)
+each book contains at least code, name and author 
+Books are stored in JSON format inside of books.json.
+Use JSON.parse() and JSON.stringify() for working with JSON.
+Use async API fs.promises.readfile() and fs.promises.writeFile()
+Book code must be uniqe, check when saving (eventualy throw an exception with code "DUPLICATE_CODE")
+There is no boilerplate, you are starting from scratch.
+
+
+Exercise 12
+Implement API Server to create and load book using Express.js.
+Use storage from previous exercise.
+API:
+getBook 
+HTTP method GET
+return the book by query parameter
+errors:
+Code attribute not assigned (status 400)
+Book with the specified code does not exist (status 400)
+createBook
+HTTP method POST
+Stores a book with parameters sent in request body
+errors:
+No attribute code, name or author specified (status 400)
+the book already exists in the database - duplicate code (status 400)
+Unexpecter error (status 500)
+Implement cache for books using lru-cache library. The cache can contain up to 10 records.
